@@ -1,5 +1,5 @@
 const User = require("../models/user-model");
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 const home = async(req,res)=>{
     try {
@@ -17,7 +17,7 @@ const register = async(req,res)=>{
         }     
         
         const saltRounds = 10;
-        const has_password = await bcrypt.hash('123345',saltRounds);
+        // const has_password = await bcrypt.hash('123345',saltRounds);
         const newUser = await User.create({ username, email });
         res.status(201).json({ data: newUser });  // Updated status code to 201 for resource creation
     } catch (error) {

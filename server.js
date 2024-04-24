@@ -1,10 +1,12 @@
 require("dotenv").config({ path: './utils/.env' });
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const authrouter = require('./router/auth-router');
 const carrouter = require('./router/car-router');
 const errorMiddleware = require("./middlewares/error-middleware");
 const connectDb = require("./utils/db");
+app.use(cors());
 app.use(express.json());
 app.use("/api/auth",authrouter);
 app.use("/api/car",carrouter);

@@ -75,6 +75,11 @@ const carBrandInsert = async (req, res) => {
 }
 const carBrand = async (req, res) => {
     try {
+         // Set CORS headers
+         res.setHeader('Access-Control-Allow-Origin', '*');
+         res.setHeader('Access-Control-Allow-Methods', 'GET');
+         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+ 
         const brands = await Brand.find();
         res.status(200).json(brands);
       } catch (error) {
@@ -84,6 +89,11 @@ const carBrand = async (req, res) => {
 const carBrandWiseModel = async (req, res) => {
     const { id } = req.params;
     try {
+         // Set CORS headers
+         res.setHeader('Access-Control-Allow-Origin', '*');
+         res.setHeader('Access-Control-Allow-Methods', 'GET');
+         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+ 
         const models = await Model.find({ brand_id: id });
         res.status(200).json(models);
     } catch (error) {
@@ -93,6 +103,11 @@ const carBrandWiseModel = async (req, res) => {
 const carModelWiseEngine = async (req, res) => {
     const { name } = req.params;
     try {
+         // Set CORS headers
+         res.setHeader('Access-Control-Allow-Origin', '*');
+         res.setHeader('Access-Control-Allow-Methods', 'GET');
+         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+ 
         const models = await Engine.find({ name: name });
         res.status(200).json(models);
     } catch (error) {
@@ -102,6 +117,11 @@ const carModelWiseEngine = async (req, res) => {
 const carModelWiseDoor = async (req, res) => {
     const { name } = req.params;
     try {
+         // Set CORS headers
+         res.setHeader('Access-Control-Allow-Origin', '*');
+         res.setHeader('Access-Control-Allow-Methods', 'GET');
+         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+ 
         const models = await EngineDoor.find({ name: name });
         res.status(200).json(models);
     } catch (error) {

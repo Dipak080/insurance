@@ -15,6 +15,10 @@ const citySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  state: {
+    type: String,
+    required: true
+  },
   // Other properties you may want to include
   // E.g., latitude, longitude, region, etc.
 });

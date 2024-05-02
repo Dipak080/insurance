@@ -5,4 +5,5 @@ router.route("/organizationroleinsert").get(mastercontroller.organizationRoleIns
 router.route("/insuranceroleinsert").get(mastercontroller.InsuranceRoleInsert);
 router.route("/organizationrole").get(mastercontroller.getorganizationRole);
 router.route("/insurancerole").get(mastercontroller.getInsuranceRole);
+router.route("/getcmotor").get(mastercontroller.getcmotor);
 module.exports = router;

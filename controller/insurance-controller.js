@@ -122,7 +122,7 @@ const getinsurancepackages = async (req, res) => {
       });
       const duePremium = response.data.DuePremium;
       const policyCoverageList = response.data.PolicyLobList[0].PolicyRiskList[0].PolicyCoverageList;      
-      return { duepremium: duePremium, policycoverage: policyCoverageList };
+      return { duepremium: response.data, policycoverage: policyCoverageList };
 
 
     } catch (error) {

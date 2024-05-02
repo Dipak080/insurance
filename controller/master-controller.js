@@ -1,4 +1,5 @@
 const User = require("../models/master-model");
+const axios = require('axios');
 // const bcrypt = require('bcrypt');
 
 const organizationRoleInsert = async(req,res)=>{
@@ -57,4 +58,40 @@ const getInsuranceRole = async(req,res)=>{
         res.status(500).json({ message: error.message });
     }
 }
-module.exports = {organizationRoleInsert,InsuranceRoleInsert,getorganizationRole,getInsuranceRole};
+const getcmotor= async(req,res)=>{
+    try{
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+         // Define the base URL of the API
+        const baseUrl = 'https://grandiosesg-gimc.insuremo.com';      
+      // Append the endpoint to the base URL
+        const apiUrl = `${baseUrl}/v1/json/tickets`;  
+      // Data to be sent in the request body
+        const requestData = {
+            username: 'Grandiose.User1',
+            password: 'Grandiose@2023'
+        };  
+        // Make a POST request to the API with data in the request body
+
+        const response = await axios.post(apiUrl, requestData, {
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+       
+        const apiMasterUrl = 'https://grandiosesg-gimc.insuremo.com/api/platform/dd/code/cache/v1/record/list/byName?name=CMOTOR_VehicleMaster';
+        const responseMaster = await axios.post(apiMasterUrl,requestData,  {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${response.data.access_token}`
+            }
+          });
+          console.log(responseMaster.data);
+          res.status(200).json(responseMaster.data);
+    }catch(error){
+        console.error('Error fetching data:', error);
+        res.status(500).json({ message: "Error fetching insurance Master", error: error.message });
+    }
+}
+module.exports = {organizationRoleInsert,InsuranceRoleInsert,getorganizationRole,getInsuranceRole,getcmotor};

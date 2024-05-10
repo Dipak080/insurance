@@ -94,4 +94,15 @@ const getcmotor= async(req,res)=>{
         res.status(500).json({ message: "Error fetching insurance Master", error: error.message });
     }
 }
-module.exports = {organizationRoleInsert,InsuranceRoleInsert,getorganizationRole,getInsuranceRole,getcmotor};
+const getUserList = async (req, res) => {
+    try {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET');
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      const user = await User.find();
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching user", error: error.message });
+    }
+  }
+module.exports = {organizationRoleInsert,InsuranceRoleInsert,getorganizationRole,getInsuranceRole,getcmotor,getUserList};

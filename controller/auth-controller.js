@@ -67,7 +67,7 @@ const register = async (req, res) => {
         res.status(400).json({ error: error.message }); // Return error message
     }
 }
-const updateuser = async (req, res) => { 
+const updateuser = async (req, res) => {
     try {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
@@ -89,4 +89,19 @@ const updateuser = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-module.exports = {login,register,updateuser};
+const getUserById = async (req, res) => {
+  try {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ data: user });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+module.exports = {login,register,updateuser,getUserById};

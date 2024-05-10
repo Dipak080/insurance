@@ -7,4 +7,5 @@ router.route("/").get(authcontroller.home);
 router.route("/register").post(authcontroller.register);
 router.route("/login").post(authcontroller.login);
 router.route("/updateuser/:id").post(authcontroller.updateuser);
+router.route("/singaluser/:id").post(authcontroller.getUserById);
 module.exports = router;

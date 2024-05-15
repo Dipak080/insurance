@@ -72,11 +72,11 @@ const updateuser = async (req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        const userId = req.params.id; // Assuming you pass user ID in the URL params
+        const userId = req.body.id; // Assuming you pass user ID in the URL params
         const updatedData = req.body;
 
         // Check if the user exists
-        const user = await User.findById(userId);
+        const user = await User.findById({_id : userId});
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }

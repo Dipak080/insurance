@@ -20,7 +20,7 @@ const login = async (req, res) => {
         }
 
         // If email and password are valid, return user data (excluding password)
-        res.status(200).json({ data: { username: user.username, email: user.email } });
+        res.status(200).json({ data:user });
     } catch (error) {
         res.status(400).json({ error: error.message }); // Return error message
     }

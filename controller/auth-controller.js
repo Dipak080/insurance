@@ -89,6 +89,23 @@ const updateuser = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
+
+const getAllUsers = async (req, res)=>{
+    try{
+        const users = await User.find();
+        return res.status(200).json({
+            data : users
+        });
+    }
+    catch(e){
+        return res.status(404).json({
+            msg : "error while fetching the users"
+        })
+    }
+}
+
+
+
 const getUserById = async (req, res) => {
   try {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -104,4 +121,4 @@ const getUserById = async (req, res) => {
     res.status(400).json({ error: error.message })
   }
 };
-module.exports = {login,register,updateuser,getUserById}
+module.exports = {login,register,updateuser,getUserById, getAllUsers}

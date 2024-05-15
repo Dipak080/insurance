@@ -8,4 +8,5 @@ router.route("/register").post(authcontroller.register);
 router.route("/login").post(authcontroller.login);
 router.route("/updateuser").post(authcontroller.updateuser);
 router.route("/singaluser/:id").get(authcontroller.getUserById);
+router.route("/getalluser").get(authcontroller.getAllUsers);
 module.exports = router;

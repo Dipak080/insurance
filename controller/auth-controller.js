@@ -121,4 +121,4 @@ const getUserById = async (req, res) => {
     res.status(400).json({ error: error.message })
   }
 };
-module.exports = {login,register,updateuser,getUserById}
+module.exports = {login,register,updateuser,getUserById, getAllUsers}

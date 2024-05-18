@@ -20,7 +20,7 @@ async function createLead(req, res){
             carModel : carModel,
             carYear : carYear,
             engineSize : engineSize,
-            suminusredValue : suminsuredValue,
+            suminsuredValue : suminsuredValue,
             provinceCity : provinceCity
         }
         if(user){

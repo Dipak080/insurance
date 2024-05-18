@@ -20,7 +20,7 @@ const leadSchema = new mongoose.Schema({
         engineSize : {
             type : String
         },
-        suminusredValue : {
+        suminsuredValue : {
             type : String
         },
         provinceCity : {

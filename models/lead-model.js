@@ -15,7 +15,7 @@ const leadSchema = new mongoose.Schema({
             type : String
         },
         carYear : {
-            type : Date
+            type : String
         },
         engineSize : {
             type : String

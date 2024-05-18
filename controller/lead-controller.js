@@ -19,17 +19,17 @@ async function createLead(req, res){
             carBrand : carBrand,
             carModel : carModel,
             carYear : carYear,
-            engigineSize : engineSize,
-            suminsuredValue : suminsuredValue,
+            engineSize : engineSize,
+            suminusredValue : suminsuredValue,
             provinceCity : provinceCity
         }
         if(user){
-            // const pushedLeadToUser = await Lead.findOneAndUpdate({email : email},
-            //     {$push : {leads : leadData}},
-            //     {new : true}
-            // );
-            user.leads.unshift(leadData);
-            await user.save();
+            const pushedLeadToUser = await Lead.findOneAndUpdate({email : email},
+                {$push : {leads : leadData}},
+                {new : true}
+            );
+            // user.leads.unshift(leadData);
+            // await user.save();
             return res.status(200).json({
                 msg : "new lead created",
                 result : true

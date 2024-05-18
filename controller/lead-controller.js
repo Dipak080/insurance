@@ -11,29 +11,40 @@ async function createLead(req, res){
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
         
         const {email, mobileNo} = req.body;
-
-        const isUserExists = await Lead.findOne({email : email});
-        if(isUserExists){
-            return res.status(400).json({
-                msg : "email already exists"
-            });
-        }
         const {carBrand, carModel, carYear, engineSize, suminsuredValue, provinceCity} = req.body;
 
-        const newUser = await Lead.create({
-            email,
-            mobileNo,
-            carBrand, 
-            carModel,
-            carYear,
-            engineSize,
-            suminsuredValue,
-            provinceCity
-        })
-        return res.status(200).json({
-            msg : "leadCreate successfully" + newUser,
-            result : true
-        })
+        const user = await Lead.findOne({email : email});
+
+        const leadData = {
+            carBrand : carBrand,
+            carModel : carModel,
+            carYear : carYear,
+            engigineSize : engineSize,
+            suminsuredValue : suminsuredValue,
+            provinceCity : provinceCity
+        }
+        if(user){
+            // const pushedLeadToUser = await Lead.findOneAndUpdate({email : email},
+            //     {$push : {leads : leadData}},
+            //     {new : true}
+            // );
+            user.leads.unshift(leadData);
+            await user.save();
+            return res.status(200).json({
+                msg : "new lead created",
+                result : true
+            })
+        }else{
+            const newUser = await Lead.create({
+                email,
+                mobileNo,
+                leads : [leadData]
+            })
+            return res.status(200).json({
+                msg : "leadCreate successfully" + newUser,
+                result : true
+            })
+        }
     }
     catch(e){
         return res.status(400).json({

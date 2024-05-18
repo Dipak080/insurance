@@ -7,24 +7,26 @@ const leadSchema = new mongoose.Schema({
     mobileNo : {
         type : String,
     },
-    carBrand : {
-        type : String,
-    },
-    carModel : {
-        type : String,
-    },
-    carYear : {
-        type : Date,
-    },
-    engineSize : {
-        type : String,
-    },
-    suminsuredValue : {
-        type : String,
-    },
-    provinceCity : {
-        type : String
-    }
+    leads : [{
+        carBrand : {
+            type : String
+        },
+        carModel : {
+            type : String
+        },
+        carYear : {
+            type : Date
+        },
+        engineSize : {
+            type : String
+        },
+        suminsuredValue : {
+            type : String
+        },
+        provinceCity : {
+            type : String
+        },
+    }]
 })
 
 

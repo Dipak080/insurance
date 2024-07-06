@@ -4,9 +4,9 @@ const leadSchema = new mongoose.Schema({
     email : {
         type : String
     },
-    mobileNo : {
-        type : String,
-    },
+    // mobileNo : {
+    //     type : String,
+    // },
     leads : [{
         carBrand : {
             type : String
